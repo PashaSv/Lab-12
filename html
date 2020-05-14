@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Lab 11</title> 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <input type="text" v-on:input="onGetName" value="Имя">
+    <div style="clear: both;"></div>
+    <input type="text" v-on:input="onGetSurname" value="Фамилия">
+    <div style="clear: both;"></div>
+    <input type="number" v-on:input="onGetNumberPhone" value="8">
+    <div style="clear: both;"></div>
+    <p> Имя: {{name}} <br> Фамилия: {{surname}} <br> Номер телефона: {{numberPhone}}</p>
+    <button v-on:click="[onAddContact(), onGetSort()]">Добавить</button>
+    <button v-on:click="[onAddSpecialContact(), onGetSort()]">Добавить в избранное</button>
+    <div style="clear: both;"></div>
+    <label>Нажмите на кнопку для смены: <br> <button v-on:click="onGetSort()">Сортировка по {{flag ? "имени" : "фамилии"}}</button></label>
+
+    <ol id="specialContacts">
+      <li v-for="specialContact in specialContacts" v-bind:key="specialContact">{{specialContact}}</li>
+    </ol>
+
+    <ol>
+      <li v-for="contact in contacts" v-bind:key="contact">{{contact}}</li>
+    </ol>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
