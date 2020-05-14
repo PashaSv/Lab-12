@@ -1,0 +1,56 @@
+let app = new Vue({
+  el: '#app',
+  data: {
+    name: '',
+    surname: '',
+    numberPhone: '',
+    flag: true,
+    contacts: [],
+    contactsName: [],
+    contactsSurname: [],
+    specialContacts: [],
+    specialContactsName: [],
+    specialContactsSurname: [],
+  },
+  methods: {
+    onGetName: function () {
+      this.name = event.target.value;
+    },
+    onGetSurname: function () {
+      this.surname = event.target.value;
+    },
+    onGetNumberPhone: function () {
+      this.numberPhone = event.target.value;
+    },
+    onAddContact: function () {
+      this.contactsName.unshift(this.name + " " +
+        this.surname + " " +
+        this.numberPhone);
+      this.contactsSurname.unshift(this.surname + " " +
+        this.name + " " +
+        this.numberPhone);
+    },
+    onAddSpecialContact: function () {
+      this.specialContactsName.unshift(this.name + " " +
+        this.surname + " " +
+        this.numberPhone);
+      this.specialContactsSurname.unshift(this.surname + " " +
+        this.name + " " +
+        this.numberPhone);
+    },
+    onGetSort: function () {
+      this.flag = !this.flag;
+      if (this.flag) {
+        this.contacts = this.contactsName;
+        this.contacts.sort();
+        this.specialContacts = this.specialContactsName;
+        this.specialContacts.sort();
+      } else {
+        this.contacts = this.contactsSurname;
+        this.contacts.sort();
+        this.specialContacts = this.specialContactsSurname;
+        this.specialContacts.sort();
+      }
+    },
+  },
+})
